@@ -9,7 +9,7 @@ client.login(process.env.BOTTOKEN);
 client.on('ready', readyDiscord);
 
 function readyDiscord() {
-    console.log('💗');
+    console.log('READY TO GO! 🚀');
 }
 
 const commandHandler = require("./commands");

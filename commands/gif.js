@@ -8,7 +8,10 @@ module.exports = async function(msg, args) {
     let url = `https://api.tenor.com/v1/search?q=${keywords}&key=${process.env.TENORKEY}&limit=8&ContentFilter=high`
     let response = await fetch(url);
     let json = await response.json();
-    //console.log(json)
+    console.log(json)
+    if (json.results.length < 1){
+        return;
+    }
     const index = Math.floor(Math.random() * json.results.length);
     msg.channel.send(json.results[index].url);
 }

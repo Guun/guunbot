@@ -1,4 +1,4 @@
-const replies = [
+const bot_replies = [
     '🚄🌈💖',
     'Choo choo!',
     'Ding! 🔔',
@@ -6,6 +6,6 @@ const replies = [
 ]
 
 module.exports = function (msg, args) {
-    const index = Math.floor(Math.random() * replies.length);
-    msg.channel.send(replies[index]);
+    const index = Math.floor(Math.random() * bot_replies.length);
+    msg.channel.send(bot_replies[index]);
 };
