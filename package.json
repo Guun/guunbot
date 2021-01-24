@@ -1,0 +1,28 @@
+{
+  "name": "guunbot",
+  "version": "1.0.0",
+  "description": "my discord bot that does things",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guun/guunbot.git"
+  },
+  "keywords": [
+    "discord",
+    "guun"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Guun/guunbot/issues"
+  },
+  "homepage": "https://github.com/Guun/guunbot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.1"
+  }
+}
