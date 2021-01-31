@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const champions = require('../league-json/champion');
+const champ_id_name = require('../league-json/champ_id_name');
 
 
 module.exports = async function(msg, args) {
@@ -19,9 +20,9 @@ module.exports = async function(msg, args) {
     //let url = `https://na1.api.riotgames.com/lol/platform/v3/champion-rotations?api_key=${process.env.LOLKEY}`
     let response = await fetch(url);
     let json = await response.json();
-    console.log(json);
+    //console.log(json);
     account_id = json["accountId"];
-    console.log(account_id);
+    //console.log(account_id);
 
     url = `https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/${account_id}?endIndex=1&beginIndex=0&api_key=${process.env.LOLKEY}`;
     response = await fetch(url);
@@ -29,8 +30,11 @@ module.exports = async function(msg, args) {
     console.log(json);
     match_id = json["matches"][0]["gameId"];
     champion_id = json["matches"][0]["champion"];
-    console.log(match_id);
+    //console.log(match_id);
+    console.log("champion_id");
     console.log(champion_id);
+    var champion_name = champ_id_name.CHAMP_ID_NAME[parseInt(champion_id)];
+    console.log(champion_name);
 
     url = `https://euw1.api.riotgames.com/lol/match/v4/matches/${match_id}?api_key=${process.env.LOLKEY}`;
     response = await fetch(url);
@@ -345,5 +349,5 @@ module.exports = async function(msg, args) {
     //const index = Math.floor(Math.random() * json.results.length);
     //msg.channel.send(json.results[index].url);
 
-    msg.channel.send(`${summoner_name} played ${champion_id} last game. Kills ${stats["kills"]},  Deaths: ${stats["deaths"]}, Assists: ${stats["assists"]}`);
+    msg.channel.send(`${summoner_name} played ${champion_name} last game. Kills ${stats["kills"]},  Deaths: ${stats["deaths"]}, Assists: ${stats["assists"]}`);
 }
