@@ -1,19 +1,21 @@
 const gif = require('./commands/gif');
 const choochoo = require('./commands/choochoo');
 const leagueoflegends = require('./commands/leagueoflegends');
-const replies = require('./commands/leagueoflegends');
+const replies = require('./commands/replies');
+const draven = require('./commands/draven');
 
-const commands = { choochoo, gif, leagueoflegends, replies };
+
+const commands = { choochoo, gif, leagueoflegends, replies, draven };
+const ids = require("./ids")
 
 module.exports = async function (msg) {
-    //console.log(msg); 
-    if (msg.channel.id == '802890903311613973') {
+    console.log(msg.content);
+    console.log(msg.author.id);
 
-        if (msg.author == '802876182017343569') {
-            msg.reply("...hey there hottiebot");
-            return;
-        }
+    if (ids.CHANNEL_IDS.includes(msg.channel.id)) {
+
         if (msg.author.bot) {
+            replies(msg, msg.author.id)
             return;
         }
                                              // msg.content = "!gif kitten"
@@ -26,6 +28,10 @@ module.exports = async function (msg) {
                 return;
             }
             commands[command](msg, tokens);  // tokens = ["kitten"]
+        }
+        
+        if (ids.USER_IDS.includes(msg.author.id)) {
+            replies(msg, msg.author.id);
         }
     }
 }
